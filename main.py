@@ -42,7 +42,7 @@ if __name__ == '__main__':
     # network backbone
     parser.add_argument('--fp16', action='store_true', help="use amp mixed precision training")
     parser.add_argument('--backbone', type=str, default='grid', choices=['grid', 'vanilla'], help="nerf backbone")
-    parser.add_argument('--sd_version', type=str, default='2.0', choices=['1.5', '2.0'], help="stable diffusion version")
+    parser.add_argument('--sd_version', type=str, default='2.0', choices=['1.5', '2.0', 'custom'], help="stable diffusion version")
     # rendering resolution in training, decrease this if CUDA OOM.
     parser.add_argument('--w', type=int, default=64, help="render width for NeRF in training")
     parser.add_argument('--h', type=int, default=64, help="render height for NeRF in training")
