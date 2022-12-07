@@ -37,6 +37,8 @@ class StableDiffusion(nn.Module):
             model_key = "stabilityai/stable-diffusion-2-base"
         elif self.sd_version == '1.5':
             model_key = "runwayml/stable-diffusion-v1-5"
+        elif self.sd_version == 'custom':
+            model_key = "/kaggle/input/stable-dreamfusion-dataset/800"
         else:
             raise ValueError(f'Stable-diffusion version {self.sd_version} not supported.')
 
