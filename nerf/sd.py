@@ -39,6 +39,7 @@ class StableDiffusion(nn.Module):
             model_key = "runwayml/stable-diffusion-v1-5"
         elif self.sd_version == 'custom':
             model_key = "/kaggle/input/stable-dreamfusion-dataset/500"
+            scheduler_model_key = "runwayml/stable-diffusion-v1-5"
         else:
             raise ValueError(f'Stable-diffusion version {self.sd_version} not supported.')
 
@@ -48,7 +49,7 @@ class StableDiffusion(nn.Module):
         self.text_encoder = CLIPTextModel.from_pretrained(model_key, subfolder="text_encoder", use_auth_token=self.token).to(self.device)
         self.unet = UNet2DConditionModel.from_pretrained(model_key, subfolder="unet", use_auth_token=self.token).to(self.device)
         
-        self.scheduler = DDIMScheduler.from_config(model_key, subfolder="scheduler")
+        self.scheduler = DDIMScheduler.from_config(scheduler_model_key, subfolder="scheduler")
         # self.scheduler = PNDMScheduler.from_config(model_key, subfolder="scheduler")
 
         self.num_train_timesteps = self.scheduler.config.num_train_timesteps
